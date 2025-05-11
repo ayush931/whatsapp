@@ -1,3 +1,3 @@
 export default {
-  reactLogo: require("@/src/assets/images/react-logo.png")
+  logo: require("@/src/assets/images/icon.png")
 }

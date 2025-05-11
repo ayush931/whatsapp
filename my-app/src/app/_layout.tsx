@@ -1,12 +1,20 @@
-import React from 'react'
-import { Stack } from 'expo-router'
+import { useEffect, useState } from "react";
+import * as SplashScreen from "expo-splash-screen";
+import { Redirect, Stack } from "expo-router";
+
+SplashScreen.preventAutoHideAsync();
 
 const RootLayout = () => {
+  const [login, setLogin] = useState(false);
+  useEffect(() => {
+    SplashScreen.hideAsync();
+  }, []);
   return (
-    <Stack>
-      <Stack.Screen name='index' />
-    </Stack>
-  )
-}
+    <>
+      <Stack screenOptions={{ headerShown: false }} />
+      {login ? <Redirect href={"/(main)"} /> : <Redirect href={"/(auth)"} />}
+    </>
+  );
+};
 
-export default RootLayout
+export default RootLayout;
